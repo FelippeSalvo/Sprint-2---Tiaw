@@ -1,4 +1,4 @@
-const API = "http://localhost:10000/usuarios";
+const API = "https://json-server-olx-puc.onrender.com/usuarios";
 
 
 document.querySelector(".login_btn")?.addEventListener("click", function (event) {
@@ -18,7 +18,7 @@ document.querySelector(".login_btn")?.addEventListener("click", function (event)
         return;
     }
 
-    fetch(`http://localhost:10000/usuarios?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}&tipoConta=${encodeURIComponent(tipoConta)}`)
+    fetch(`https://json-server-olx-puc.onrender.com/usuarios?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}&tipoConta=${encodeURIComponent(tipoConta)}`)
         .then(res => res.json())
         .then(usuarios => {
             if (usuarios.length > 0) {
