@@ -1,4 +1,3 @@
-
 const API = "https://json-server-olx-puc.onrender.com/usuarios";
 
 
@@ -7,7 +6,7 @@ function gerarId() {
 }
 
 
-document.querySelector(".login_btn")?.addEventListener("click", function (event) {
+document.getElementById("botaoLogin")?.addEventListener("click", function (event) {
     event.preventDefault();
 
     const email = document.getElementById("email")?.value.trim();
@@ -24,13 +23,12 @@ document.querySelector(".login_btn")?.addEventListener("click", function (event)
         return;
     }
 
-   
     fetch(`${API}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}&tipoConta=${encodeURIComponent(tipoConta)}`)
         .then(res => res.json())
         .then(usuarios => {
             if (usuarios.length > 0) {
                 alert("Login bem-sucedido!");
-                window.location.href = "placeholder.html"; 
+                window.location.href = "placeholder.html";
             } else {
                 alert("Credenciais incorretas! Verifique os dados informados.");
             }
@@ -63,8 +61,7 @@ document.getElementById("botaoCadastro")?.addEventListener("click", function () 
         return;
     }
 
-    
-        const novoUsuario = {
+    const novoUsuario = {
         id: gerarId(),
         email,
         senha,
@@ -72,7 +69,6 @@ document.getElementById("botaoCadastro")?.addEventListener("click", function () 
         nomeUsuario
     };
 
-    
     fetch(API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -81,7 +77,7 @@ document.getElementById("botaoCadastro")?.addEventListener("click", function () 
         .then(res => {
             if (res.ok) {
                 alert("Conta criada com sucesso!");
-                window.location.href = "index.html"; 
+                window.location.href = "index.html";
             } else {
                 alert("Erro ao cadastrar. Tente novamente.");
             }
